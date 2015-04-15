@@ -1,0 +1,64 @@
+<!-- TEXT FIELDS -->
+<md-input-container ng-if="field.type=='text'">
+    <label>{{field.label}}</label>
+    <input required
+           name="{{field.name}}"
+           ng-model="field.data">
+
+    <div ng-messages="{{formName}}.{{field.name}}.$error"
+         ng-messages-include="shared/dn_form/error-messages.html"></div>
+</md-input-container>
+
+<!-- EMAIL FIELDS -->
+<md-input-container ng-if="field.type=='email'">
+    <label>{{field.label}}</label>
+    <input required
+           type="{{field.type}}"
+           name="{{field.name}}"
+           ng-model="field.data">
+
+    <div ng-messages="{{formName}}.{{field.name}}.$error"
+         ng-messages-include="shared/dn_form/error-messages.html"></div>
+</md-input-container>
+
+<!-- PASSWORD FIELDS -->
+<md-input-container ng-if="field.type=='password'">
+    <label>{{field.label}}</label>
+    <input required
+           type="{{field.type}}"
+           name="{{field.name}}"
+           ng-model="field.data"
+           ng-minlength="{{field.minPassword}}">
+
+    <div ng-messages="{{formName}}.{{field.name}}.$error"
+         ng-messages-include="shared/dn_form/error-messages.html"></div>
+</md-input-container>
+
+<!-- SELECT FIELDS -->
+<md-input-container ng-if="field.type=='select'">
+    <md-select
+            ng-model="field.data"
+            placeholder="{{field.label}}">
+        <md-option ng-value="option.id"
+                   ng-repeat="option in field.options">
+            {{option.name}}
+        </md-option>
+    </md-select>
+</md-input-container>
+
+<!-- RADIO FIELDS -->
+<md-input-container ng-if="field.type=='radio'">
+    <p>{{field.label}}</p>
+    <md-radio-group
+            required
+            name="{{field.name}}"
+            ng-model="field.data">
+        <md-radio-button ng-value="option.id"
+                         ng-repeat="option in field.options">
+            {{option.name}}
+        </md-radio-button>
+    </md-radio-group>
+
+    <div ng-messages="{{formName}}.{{field.name}}.$error"
+         ng-messages-include="shared/dn_form/error-messages.html"></div>
+</md-input-container>
