@@ -4,16 +4,6 @@
 
 angular.module('qmsApp.dnForm', [])
 
-    .controller('FormCtrl', function() {
-      $scope.submitted = false;
-      $scope.submit = function() {
-
-      };
-      $scope.interacted = function(field) {
-        return $scope.submitted || field.$dirty;
-      };
-    })
-
     .directive('dnInput', function() {
       return {
         restrict: 'E',

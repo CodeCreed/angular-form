@@ -7,7 +7,8 @@
             ng-model="field.data">
 
     <div ng-messages="{{formName}}.{{field.name}}.$error"
-         ng-messages-include="shared/dn_form/error-messages.html"></div>
+         ng-messages-include="shared/dn_form/error-messages.html"
+         ng-show="{{formName}}.{{field.name}}.$touched"></div>
 </md-input-container>
 
 
@@ -21,7 +22,8 @@
             ng-model="field.data">
 
     <div ng-messages="{{formName}}.{{field.name}}.$error"
-         ng-messages-include="shared/dn_form/error-messages.html"></div>
+         ng-messages-include="shared/dn_form/error-messages.html"
+         ng-show="{{formName}}.{{field.name}}.$touched"></div>
 </md-input-container>
 
 
@@ -36,7 +38,8 @@
             ng-model="field.data">
 
     <div ng-messages="{{formName}}.{{field.name}}.$error"
-         ng-messages-include="shared/dn_form/error-messages.html"></div>
+         ng-messages-include="shared/dn_form/error-messages.html"
+         ng-show="{{formName}}.{{field.name}}.$touched"></div>
 </md-input-container>
 
 
@@ -55,7 +58,8 @@
     </md-select>
 
     <div ng-messages="{{formName}}.{{field.name}}.$error"
-         ng-messages-include="shared/dn_form/error-messages.html">
+         ng-messages-include="shared/dn_form/error-messages.html"
+         ng-show="{{formName}}.{{field.name}}.$touched">
         <div ng-message="required">
             You must select an option
         </div>
@@ -76,7 +80,8 @@
     </md-radio-group>
 
     <div ng-messages="{{formName}}.{{field.name}}.$error"
-         ng-messages-include="shared/dn_form/error-messages.html">
+         ng-messages-include="shared/dn_form/error-messages.html"
+         ng-show="{{formName}}.{{field.name}}.$touched">
         <div ng-message="required">
             You must select an option
         </div>
