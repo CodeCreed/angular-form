@@ -4,22 +4,32 @@
 
 angular.module('qmsApp.dnForm', [])
 
+    .controller('FormCtrl', function() {
+      $scope.submitted = false;
+      $scope.submit = function() {
+
+      };
+      $scope.interacted = function(field) {
+        return $scope.submitted || field.$dirty;
+      };
+    })
+
     .directive('dnInput', function() {
       return {
         restrict: 'E',
-        replace: false,
         scope: true,
-        //scope: {
-        //  formName: '@',
-        //  field: '='
-        //},
-        templateUrl: "shared/dn_form/dn-form.html",
+        templateUrl: "shared/dn_form/dn-input.html",
+        replace: false,
         controller: ['$scope', '$element', function($scope, $element) {
           $scope.formName = $element.parent().attr("name");
         }],
 
-        link: function(scope, el, attr) {
-
+        link: function(scope, element, attributes) {
+          if(attributes.field) {
+            // Only override scope.field if field attribute is set
+            // Otherwise it would be destructive to override field possibly set by ngRepeat implicitly
+            scope.field = scope.$eval(attributes.field);
+          }
         }
       }
 
