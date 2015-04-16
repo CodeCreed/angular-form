@@ -1,99 +1,108 @@
-<!-- TEXT FIELDS -->
-<md-input-container ng-if="field.type=='text'">
-    <label>{{field.label}}</label>
-    <input
-            ng-required="field.required"
-            name="{{field.name}}"
-            ng-model="field.data">
+<div>
+    <!-- TEXT FIELDS -->
+    <md-input-container ng-if="field.type=='text'">
+        <label>{{field.label}}</label>
+        <input
+                ng-required="field.required"
+                name="{{field.name}}"
+                ng-model="field.data">
 
-    <div ng-messages="{{formName}}.{{field.name}}.$error"
-         ng-messages-include="shared/dn_form/error-messages.html"
-         ng-show="{{formName}}.{{field.name}}.$touched"></div>
-</md-input-container>
-
-
-<!-- EMAIL FIELDS -->
-<md-input-container ng-if="field.type=='email'">
-    <label>{{field.label}}</label>
-    <input
-            type="{{field.type}}"
-            name="{{field.name}}"
-            ng-required="field.required"
-            ng-model="field.data">
-
-    <div ng-messages="{{formName}}.{{field.name}}.$error"
-         ng-messages-include="shared/dn_form/error-messages.html"
-         ng-show="{{formName}}.{{field.name}}.$touched"></div>
-</md-input-container>
+        <div ng-messages="{{formName}}.{{field.name}}.$error"
+             ng-messages-include="shared/dn_form/error-messages.html"
+             ng-show="{{formName}}.{{field.name}}.$touched"></div>
+    </md-input-container>
 
 
-<!-- PASSWORD FIELDS -->
-<md-input-container ng-if="field.type=='password'">
-    <label>{{field.label}}</label>
-    <input
-            type="{{field.type}}"
-            name="{{field.name}}"
-            ng-required="field.required"
-            ng-minlength="{{field.minPassword}}"
-            ng-model="field.data">
+    <!-- EMAIL FIELDS -->
+    <md-input-container ng-if="field.type=='email'">
+        <label>{{field.label}}</label>
+        <input
+                type="{{field.type}}"
+                name="{{field.name}}"
+                ng-required="field.required"
+                ng-model="field.data">
 
-    <div ng-messages="{{formName}}.{{field.name}}.$error"
-         ng-messages-include="shared/dn_form/error-messages.html"
-         ng-show="{{formName}}.{{field.name}}.$touched"></div>
-</md-input-container>
+        <div ng-messages="{{formName}}.{{field.name}}.$error"
+             ng-messages-include="shared/dn_form/error-messages.html"
+             ng-show="{{formName}}.{{field.name}}.$touched"></div>
+    </md-input-container>
 
 
-<!-- SELECT FIELDS -->
-<md-input-container ng-if="field.type=='select'">
-    <md-select
-            id="{{field.name}}"
-            placeholder="{{field.label}}"
-            ng-required="field.required"
-            ng-model="field.data">
-        <md-option
-                value="{{option.id}}"
-                ng-repeat="option in field.options">
-            {{option.name}}
-        </md-option>
-    </md-select>
+    <!-- PASSWORD FIELDS -->
+    <md-input-container ng-if="field.type=='password'">
+        <label>{{field.label}}</label>
+        <input
+                type="{{field.type}}"
+                name="{{field.name}}"
+                ng-required="field.required"
+                ng-minlength="{{field.minPassword}}"
+                ng-model="field.data">
 
-    <div ng-messages="{{formName}}.{{field.name}}.$error"
-         ng-messages-include="shared/dn_form/error-messages.html"
-         ng-show="{{formName}}.{{field.name}}.$touched">
-        <div ng-message="required">
-            You must select an option
+        <div ng-messages="{{formName}}.{{field.name}}.$error"
+             ng-messages-include="shared/dn_form/error-messages.html"
+             ng-show="{{formName}}.{{field.name}}.$touched"></div>
+    </md-input-container>
+
+
+    <!-- SELECT FIELDS -->
+    <md-input-container ng-if="field.type=='select'">
+        <select
+                name="{{field.name}}"
+                ng-required="field.required"
+                ng-options="option.id as option.name for option in field.options"
+                ng-model="field.data">
+        </select>
+
+        <div ng-messages="{{formName}}.{{field.name}}.$error"
+             ng-messages-include="shared/dn_form/error-messages.html"
+             ng-show="{{formName}}.{{field.name}}.$touched">
+            <div ng-message="required">
+                You must select an option
+            </div>
         </div>
-    </div>
-</md-input-container>
+    </md-input-container>
 
 
-<!-- RADIO FIELDS -->
-<md-input-container ng-if="field.type=='radio'">
-    <md-radio-group
-            name="{{field.name}}"
-            ng-required="field.required"
-            ng-model="field.data">
-        <md-radio-button ng-repeat="option in field.options"
-                         ng-value="option.id">
-            {{option.name}}
-        </md-radio-button>
-    </md-radio-group>
+    <!-- RADIO FIELDS -->
+    <md-input-container ng-if="field.type=='radio'">
+        <md-radio-group
+                name="{{field.name}}"
+                ng-required="field.required"
+                ng-model="field.data"
+                ajax-validation="">
+            <md-radio-button ng-repeat="option in field.options"
+                             ng-value="option.id">
+                {{option.name}}
+            </md-radio-button>
+        </md-radio-group>
 
-    <div ng-messages="{{formName}}.{{field.name}}.$error"
-         ng-messages-include="shared/dn_form/error-messages.html"
-         ng-show="{{formName}}.{{field.name}}.$touched">
-        <div ng-message="required">
-            You must select an option
+        <div ng-messages="{{formName}}.{{field.name}}.$error"
+             ng-messages-include="shared/dn_form/error-messages.html"
+             ng-show="{{formName}}.{{field.name}}.$touched">
+            <div ng-message="required">
+                You must select an option
+            </div>
         </div>
-    </div>
-</md-input-container>
+    </md-input-container>
 
 
-<!-- SUBMIT BUTTON -->
-<md-button
-        ng-if="field.type=='submit'"
-        name="{{field.name}}"
-        class="md-raised md-primary"
-        ng-disabled="{{formName}}.$invalid || {{formName}}.$pristine">
-    {{field.label}}
-</md-button>
+    <!-- CHECKBOX -->
+    <md-checkbox
+            ng-if="field.type=='checkbox'"
+            class="md-primary"
+            name="{{field.name}}"
+            ng-disabled="field.disabled"
+            ng-model="field.data">
+        {{field.label}}
+    </md-checkbox>
+
+
+    <!-- SUBMIT BUTTON -->
+    <md-button
+            ng-if="field.type=='submit'"
+            name="{{field.name}}"
+            class="md-raised md-primary"
+            ng-disabled="{{formName}}.$invalid || {{formName}}.$pristine">
+        {{field.label}}
+    </md-button>
+</div>

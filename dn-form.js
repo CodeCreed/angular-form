@@ -9,7 +9,7 @@ angular.module('qmsApp.dnForm', [])
         restrict: 'E',
         scope: true,
         templateUrl: "shared/dn_form/dn-input.html",
-        replace: false,
+        replace: true,
         controller: ['$scope', '$element', function($scope, $element) {
           $scope.formName = $element.parent().attr("name");
         }],
