@@ -1,5 +1,5 @@
 <div>
-    <!-- TEXT FIELDS -->
+    <!-- TEXT FIELD -->
     <md-input-container ng-if="field.type=='text'">
         <label>{{field.label}}</label>
         <input
@@ -13,11 +13,26 @@
     </md-input-container>
 
 
-    <!-- EMAIL FIELDS -->
+    <!-- NUMBER FIELD -->
+    <md-input-container ng-if="field.type=='number'">
+        <label>{{field.label}}</label>
+        <input
+                type="number"
+                ng-required="field.required"
+                name="{{field.name}}"
+                ng-model="field.data">
+
+        <div ng-messages="{{formName}}.{{field.name}}.$error"
+             ng-messages-include="shared/dn_form/error-messages.html"
+             ng-show="{{formName}}.{{field.name}}.$touched"></div>
+    </md-input-container>
+
+
+    <!-- EMAIL FIELD -->
     <md-input-container ng-if="field.type=='email'">
         <label>{{field.label}}</label>
         <input
-                type="{{field.type}}"
+                type="email"
                 name="{{field.name}}"
                 ng-required="field.required"
                 ng-model="field.data">
@@ -28,11 +43,11 @@
     </md-input-container>
 
 
-    <!-- PASSWORD FIELDS -->
+    <!-- PASSWORD FIELD -->
     <md-input-container ng-if="field.type=='password'">
         <label>{{field.label}}</label>
         <input
-                type="{{field.type}}"
+                type="password"
                 name="{{field.name}}"
                 ng-required="field.required"
                 ng-minlength="{{field.minPassword}}"
@@ -44,7 +59,7 @@
     </md-input-container>
 
 
-    <!-- SELECT FIELDS -->
+    <!-- SELECT FIELD -->
     <md-input-container ng-if="field.type=='select'">
         <select
                 name="{{field.name}}"
@@ -63,7 +78,7 @@
     </md-input-container>
 
 
-    <!-- RADIO FIELDS -->
+    <!-- RADIO FIELD -->
     <md-input-container ng-if="field.type=='radio'">
         <md-radio-group
                 name="{{field.name}}"
