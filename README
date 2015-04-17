@@ -9,7 +9,8 @@ form = {
               {type: "email", name: "emailUser", label: "Email" , required: true, data:""},
               {type: "password", name: "pass", label: "Password" , minPassword: 6, required: true, data:""},
               {type: "select", name: "programmer_id", label: "Programmer" , options:[{name: "Sagun"},{name: "Ruraj"},{name: "Sushan"},{name: "Subigya"}], required: true, data:""},
-              {type: "checkbox", name: "language_id", label: "Programming Language" , options:[{id: 1, name: "JAVA"},{id: 2, name: "Python"},{id: 3, name: "C++"},{id: 4, name: "Scala"}], required: true, data:""},
+              {type: "checkbox", name: "language_id", label: "Java", disabled: false, data:""},
+              {type: "checkbox", name: "language_id2", label: "Scala", disabled: true, data:""},
               {type: "submit", name: "submit_button", label: "Submit"}
             ]
       }
