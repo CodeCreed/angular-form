@@ -11,16 +11,24 @@ angular.module('qmsApp.dnForm', [])
         templateUrl: "shared/dn_form/dn-input.html",
         replace: true,
         controller: ['$scope', '$element', function($scope, $element) {
-          $scope.formName = $element.parent().attr("name");
-        }],
 
-        link: function(scope, element, attributes) {
-          if(attributes.field) {
-            // Only override scope.field if field attribute is set
-            // Otherwise it would be destructive to override field possibly set by ngRepeat implicitly
-            scope.field = scope.$eval(attributes.field);
+        }]
+      }
+
+    })
+
+    .directive('dnForm', function() {
+      return {
+        restrict: 'E',
+        templateUrl: "shared/dn_form/dn-form.html",
+        replace: true,
+        controller: ['$scope', '$element', function($scope, $element) {
+
+        }],
+        link: function(scope, element, attrs) {
+          if (attrs.form) {
+            scope.form = scope.$eval(attrs.form);
           }
         }
       }
-
     });

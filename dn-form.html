@@ -1,0 +1,11 @@
+<form name="{{form.name}}">
+    <div layout="row" ng-repeat="row in form.fields">
+        <div
+                layout="column"
+                ng-repeat="column in row"
+                flex=" {{ parseInt(100 / row.length)}}"
+                class="dn-column">
+            <dn-input ng-repeat="field in column"></dn-input>
+        </div>
+    </div>
+</form>
