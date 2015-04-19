@@ -28,6 +28,8 @@ angular.module('qmsApp.dnForm', [])
         link: function(scope, element, attrs) {
           if (attrs.form) {
             scope.form = scope.$eval(attrs.form);
+            scope.modelName = scope.$eval(attrs.dnModel);
+            scope.submitMethod = scope.$eval(attrs.dnSubmit);
           }
         }
       }

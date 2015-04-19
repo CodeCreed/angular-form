@@ -5,7 +5,7 @@
         <input
                 ng-required="field.required"
                 name="{{field.name}}"
-                ng-model="field.data">
+                ng-model="modelName[field.name]">
 
         <div ng-messages="{{form.name}}.{{field.name}}.$error"
              ng-messages-include="shared/dn_form/error-messages.html"
@@ -20,7 +20,7 @@
                 type="number"
                 ng-required="field.required"
                 name="{{field.name}}"
-                ng-model="field.data">
+                ng-model="modelName[field.name]">
 
         <div ng-messages="{{form.name}}.{{field.name}}.$error"
              ng-messages-include="shared/dn_form/error-messages.html"
@@ -35,7 +35,7 @@
                 type="email"
                 name="{{field.name}}"
                 ng-required="field.required"
-                ng-model="field.data">
+                ng-model="modelName[field.name]">
 
         <div ng-messages="{{form.name}}.{{field.name}}.$error"
              ng-messages-include="shared/dn_form/error-messages.html"
@@ -51,7 +51,7 @@
                 name="{{field.name}}"
                 ng-required="field.required"
                 ng-minlength="{{field.minPassword}}"
-                ng-model="field.data">
+                ng-model="modelName[field.name]">
 
         <div ng-messages="{{form.name}}.{{field.name}}.$error"
              ng-messages-include="shared/dn_form/error-messages.html"
@@ -65,7 +65,7 @@
                 name="{{field.name}}"
                 ng-required="field.required"
                 ng-options="option.id as option.name for option in field.options"
-                ng-model="field.data">
+                ng-model="modelName[field.name]">
         </select>
 
         <div ng-messages="{{form.name}}.{{field.name}}.$error"
@@ -83,7 +83,7 @@
         <md-radio-group
                 name="{{field.name}}"
                 ng-required="field.required"
-                ng-model="field.data"
+                ng-model="modelName[field.name]"
                 ajax-validation="">
             <md-radio-button ng-repeat="option in field.options"
                              ng-value="option.id">
@@ -107,7 +107,7 @@
             class="md-primary"
             name="{{field.name}}"
             ng-disabled="field.disabled"
-            ng-model="field.data">
+            ng-model="modelName[field.name]">
         {{field.label}}
     </md-checkbox>
 
