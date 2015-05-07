@@ -2,13 +2,13 @@
  * Created by sagun on 4/15/15.
  */
 
-angular.module('qmsApp.dnForm', [])
+angular.module('dnForm', [])
 
     .directive('dnInput', function() {
       return {
         restrict: 'E',
         scope: true,
-        templateUrl: "shared/dn_form/dn-input.html",
+        templateUrl: currentScriptPath.substring(0, currentScriptPath.lastIndexOf('/') + 1) + "dn-input.html",
         replace: true,
         controller: ['$scope', '$element', function($scope, $element) {
 
@@ -20,7 +20,7 @@ angular.module('qmsApp.dnForm', [])
     .directive('dnForm', function() {
       return {
         restrict: 'E',
-        templateUrl: "shared/dn_form/dn-form.html",
+        templateUrl: currentScriptPath.substring(0, currentScriptPath.lastIndexOf('/') + 1) + "dn-form.html",
         replace: true,
         controller: ['$scope', '$element', function($scope, $element) {
 
