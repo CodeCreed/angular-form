@@ -1,13 +1,15 @@
-Creating form from JSON,
+### Creating form from JSON
 -----------------------
+```html
 <dn-form form=formObject dn-model=formData></dn-form>
+```
 
-NOTE: formObject and formData need to be the scope of the controller within which <dn-form></dn-form> is being used.
+NOTE: formObject and formData need to be the scope of the controller within which *<dn-form></dn-form>* is being used.
 
 
-Example Controller providing form object and model
+### Example Controller providing form object and model
 ------------------
-
+```javascript
 function FormController($scope) {
   $scope.formObject = {
     name: "TestForm", // Name should not contain any special characters like space or anything
@@ -42,3 +44,4 @@ function FormController($scope) {
   $scope.formData = {};
 
 }
+```
