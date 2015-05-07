@@ -1,3 +1,8 @@
+### Requirements
+
+* angular-material (*bower install angular-material*)
+* angular-messages (*bower install angular-messages*)
+
 ### Creating form from JSON
 -----------------------
 ```html
