@@ -8,7 +8,7 @@
                 ng-model="modelName[field.name]">
 
         <div ng-messages="{{form.name}}.{{field.name}}.$error"
-             ng-messages-include="shared/dn_form/error-messages.html"
+             ng-messages-include="{{messagesPath}}"
              ng-show="{{form.name}}.{{field.name}}.$touched"></div>
     </md-input-container>
 
@@ -23,7 +23,7 @@
                 ng-model="modelName[field.name]">
 
         <div ng-messages="{{form.name}}.{{field.name}}.$error"
-             ng-messages-include="shared/dn_form/error-messages.html"
+             ng-messages-include="{{messagesPath}}"
              ng-show="{{form.name}}.{{field.name}}.$touched"></div>
     </md-input-container>
 
@@ -38,7 +38,7 @@
                 ng-model="modelName[field.name]">
 
         <div ng-messages="{{form.name}}.{{field.name}}.$error"
-             ng-messages-include="shared/dn_form/error-messages.html"
+             ng-messages-include="{{messagesPath}}"
              ng-show="{{form.name}}.{{field.name}}.$touched"></div>
     </md-input-container>
 
@@ -54,27 +54,19 @@
                 ng-model="modelName[field.name]">
 
         <div ng-messages="{{form.name}}.{{field.name}}.$error"
-             ng-messages-include="shared/dn_form/error-messages.html"
+             ng-messages-include="{{messagesPath}}"
              ng-show="{{form.name}}.{{field.name}}.$touched"></div>
     </md-input-container>
 
 
     <!-- SELECT FIELD -->
     <md-input-container ng-if="field.type=='select'">
-        <select
-                name="{{field.name}}"
+        <md-select
+                placeholder="Select {{field.label}}"
                 ng-required="field.required"
-                ng-options="option.id as option.name for option in field.options"
                 ng-model="modelName[field.name]">
-        </select>
-
-        <div ng-messages="{{form.name}}.{{field.name}}.$error"
-             ng-messages-include="shared/dn_form/error-messages.html"
-             ng-show="{{form.name}}.{{field.name}}.$touched">
-            <div ng-message="required">
-                You must select an option
-            </div>
-        </div>
+            <md-option ng-repeat="option in field.options track by option.id" ng-value="option.id">{{option.name}}</md-option>
+        </md-select>
     </md-input-container>
 
 
@@ -92,7 +84,7 @@
         </md-radio-group>
 
         <div ng-messages="{{form.name}}.{{field.name}}.$error"
-             ng-messages-include="shared/dn_form/error-messages.html"
+             ng-messages-include="{{messagesPath}}"
              ng-show="{{form.name}}.{{field.name}}.$touched">
             <div ng-message="required">
                 You must select an option
