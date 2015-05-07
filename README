@@ -1,29 +1,44 @@
-Sample JSON Data used to create form,
-------------------------------------
-form = {
-        name: "TestForm",
-        fields:
-            [
-              {type: "text", name: "firstname", label: "Name" , required: true, data:""},
-              {type: "radio", name: "ide_id", label: "IDE" , options:[{id: 1, name: "Eclipse"},{id: 2, name: "IntelliJ"},{id: 3, name: "Netbeans"},{id: 4, name: "Brackets"}], required: true, data:""},
-              {type: "email", name: "emailUser", label: "Email" , required: true, data:""},
-              {type: "password", name: "pass", label: "Password" , minPassword: 6, required: true, data:""},
-              {type: "select", name: "programmer_id", label: "Programmer" , options:[{name: "Sagun"},{name: "Ruraj"},{name: "Sushan"},{name: "Subigya"}], required: true, data:""},
-              {type: "checkbox", name: "language_id", label: "Java", disabled: false, data:""},
-              {type: "checkbox", name: "language_id2", label: "Scala", disabled: true, data:""},
-              {type: "submit", name: "submit_button", label: "Submit"}
-            ]
-      }
-
-
 Creating form from JSON,
 -----------------------
-<form name="{{form.name}}">
-    <dn-input ng-repeat="field in form.fields"></dn-input>
-</form>
+<dn-form form=formObject dn-model=formData></dn-form>
 
-If you use other names while iterating besides "field", you may have to manually set field attribute
-e.g.
-<form name="{{form.name}}">
-    <dn-input ng-repeat="currentField in form.fields" field=currentField></dn-input>
-</form>
+NOTE: formObject and formData need to be the scope of the controller within which <dn-form></dn-form> is being used.
+
+
+Example Controller providing form object and model
+------------------
+
+function FormController($scope) {
+  $scope.formObject = {
+    name: "TestForm", // Name should not contain any special characters like space or anything
+    fields:
+        [ // start of rows
+          [ // Row 1
+            [ // Column 1
+                {type: "text", name: "firstname", label: "Name" , required: true},
+                {type: "radio", name: "ide_id", label: "IDE" , options:[{id: 1, name: "Eclipse"},{id: 2, name: "IntelliJ"},{id: 3, name: "Netbeans"},{id: 4, name: "Brackets"}], required: true},
+                {type: "email", name: "emailUser", label: "Email" , required: true}
+            ]
+          ],
+          [ // Row 2
+            [ // Column 1
+                {type: "password", name: "pass", label: "Password" , minPassword: 6, required: true},
+                {type: "select", name: "programmer_id", label: "Programmer" , options:[{id:"1", name: "Sagun"},{id:"2", name: "Ruraj"},{id:"3", name: "Sushan"},{id:"4", name: "Subigya"}], required: true}
+            ],
+            [ // Column 2
+                {type: "checkbox", name: "language_id", label: "Java", disabled: false},
+                {type: "checkbox", name: "language_id2", label: "Scala", disabled: true},
+            ]
+          ],
+          [ // Row 3
+            [ // Column 1
+                {type: "submit", name: "submit_button", label: "Submit"}
+            ]
+          ]
+        ]
+  };
+
+  // This object will be used to populate the form and also will reflect any data entered in the form
+  $scope.formData = {};
+
+}
