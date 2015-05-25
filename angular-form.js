@@ -26,6 +26,7 @@ angular.module('angularForm', [])
         restrict: 'E',
         templateUrl: currentScriptPath + "angular-form.html",
         replace: true,
+        scope: true,
         controller: ['$scope', '$element', function($scope, $element) {
 
         }],
