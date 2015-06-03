@@ -22,20 +22,18 @@ angular.module('angularForm', [])
     })
 
     .directive('dnForm', function() {
-      return {
-        restrict: 'E',
-        templateUrl: currentScriptPath + "angular-form.html",
-        replace: true,
-        scope: true,
-        controller: ['$scope', '$element', function($scope, $element) {
+        return {
+            restrict: 'E',
+            templateUrl: currentScriptPath + "angular-form.html",
+            replace: true,
+            scope: {
+                form: "=",
+                modelName: "=dnModel",
+                submitMethod: "=dnSubmit"
+            },
 
-        }],
-        link: function(scope, element, attrs) {
-          if (attrs.form) {
-            scope.form = scope.$eval(attrs.form);
-            scope.modelName = scope.$eval(attrs.dnModel);
-            scope.submitMethod = scope.$eval(attrs.dnSubmit);
-          }
+            controller: ['$scope', '$element', function($scope, $element) {
+
+            }]
         }
-      }
     });
