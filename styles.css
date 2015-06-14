@@ -1,0 +1,13 @@
+.form-error {
+    color:red;
+    font-size: smaller;
+}
+
+.form-input-container md-input-container {
+    padding: 2px 2px 10px;
+}
+
+.form-input-container > div {
+    height: 80px;
+    padding: 2px;
+}
