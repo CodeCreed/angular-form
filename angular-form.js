@@ -6,7 +6,17 @@ var scripts = document.getElementsByTagName("script");
 var currentScriptPath = scripts[scripts.length-1].src;
 currentScriptPath = currentScriptPath.substring(0, currentScriptPath.lastIndexOf('/') + 1);
 
-angular.module('angularForm', ['ngMessages', 'ngMaterial'])
+function loadStyle() {
+    var fileRef = document.createElement("link");
+    fileRef.setAttribute("rel", "stylesheet");
+    fileRef.setAttribute("type", "text/css");
+    fileRef.setAttribute("href", currentScriptPath + "styles.css");
+
+    if (typeof fileRef != "undefined")
+        document.getElementsByTagName("head")[0].appendChild(fileRef)
+}
+
+angular.module('angularForm', ['ngMaterial'])
 
     .directive('dnInput', function() {
         return {
@@ -15,7 +25,7 @@ angular.module('angularForm', ['ngMessages', 'ngMaterial'])
             templateUrl: currentScriptPath + "angular-input.html",
             replace: true,
             controller: ['$scope', '$http', function($scope, $http) {
-                $scope.messagesPath = currentScriptPath + "error-messages.html";
+                loadStyle();
 
                 if($scope.field.type == "select") {
                     if($scope.field.optionsUrl) {
@@ -28,7 +38,6 @@ angular.module('angularForm', ['ngMessages', 'ngMaterial'])
                 }
             }]
         }
-
     })
 
     .directive('dnForm', function() {
