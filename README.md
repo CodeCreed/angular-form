@@ -1,13 +1,13 @@
 ### Requirements
 
 * angular-material (*bower install angular-material*)
-* angular-messages (*bower install angular-messages*)
 
 ### Creating form from JSON
 -----------------------
 ```html
 <dn-form form=formObject dn-model=formData></dn-form>
 ```
+
 
 NOTE: formObject and formData need to be the scope of the controller within which *<dn-form></dn-form>* is being used.
 
@@ -47,6 +47,8 @@ function FormController($scope) {
 
   // This object will be used to populate the form and also will reflect any data entered in the form
   $scope.formData = {};
-
 }
 ```
+
+Notes:
+1. Options to select type input can be passed with ajax call. Add `"optionsUrl": "/trekker/countries"` as one of the property.
