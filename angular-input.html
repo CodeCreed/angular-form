@@ -4,6 +4,9 @@
         <md-input-container>
             <label>{{field.label}}</label>
             <input
+                    type="text"
+                    dynamic-directives="field.validators"
+                    ng-minlength="{{field.minLength}}"
                     ng-required="field.required"
                     name="{{field.name}}"
                     ng-model="modelName[field.name]">
@@ -13,6 +16,13 @@
               ng-show="{{form.name}}.{{field.name}}.$touched && {{form.name}}.{{field.name}}.$invalid">
 
             <span ng-show="{{form.name}}.{{field.name}}.$error.required">Field is required.</span>
+            <span ng-show="{{form.name}}.{{field.name}}.$error.minlength">Field too short. Must be minimum {{field.minLength}} characters.</span>
+
+            <div ng-repeat="validator in field.validators">
+                <span data-ng-show="{{form.name}}.{{field.name}}.$error.{{validator.error}}">
+                    {{validator.message}}
+                </span>
+            </div>
         </span>
     </div>
 
@@ -23,7 +33,10 @@
             <label>{{field.label}}</label>
             <input
                     type="number"
+                    dynamic-directives="field.validators"
+                    ng-minlength="{{field.minLength}}"
                     ng-required="field.required"
+                    ng-disabled="field.disabled"
                     name="{{field.name}}"
                     ng-model="modelName[field.name]">
         </md-input-container>
@@ -33,6 +46,13 @@
 
             <span ng-show="{{form.name}}.{{field.name}}.$error.required">Field is required.</span>
             <span ng-show="{{form.name}}.{{field.name}}.$error.number">Invalid field type, should be a number.</span>
+            <span ng-show="{{form.name}}.{{field.name}}.$error.minlength">Number too short. Must be minimum {{field.minLength}} characters.</span>
+
+            <div ng-repeat="validator in field.validators">
+                <span data-ng-show="{{form.name}}.{{field.name}}.$error.{{validator.error}}">
+                    {{validator.message}}
+                </span>
+            </div>
         </span>
     </div>
 
@@ -43,8 +63,10 @@
             <label>{{field.label}}</label>
             <input
                     type="email"
-                    name="{{field.name}}"
+                    dynamic-directives="field.validators"
                     ng-required="field.required"
+                    ng-disabled="field.disabled"
+                    name="{{field.name}}"
                     ng-model="modelName[field.name]">
         </md-input-container>
 
@@ -53,6 +75,12 @@
 
             <span ng-show="{{form.name}}.{{field.name}}.$error.required">Email is required.</span>
             <span ng-show="{{form.name}}.{{field.name}}.$error.email">Invalid email address.</span>
+
+            <div ng-repeat="validator in field.validators">
+                <span data-ng-show="{{form.name}}.{{field.name}}.$error.{{validator.error}}">
+                    {{validator.message}}
+                </span>
+            </div>
         </span>
     </div>
 
@@ -63,9 +91,11 @@
             <label>{{field.label}}</label>
             <input
                     type="password"
-                    name="{{field.name}}"
+                    dynamic-directives="field.validators"
+                    ng-minlength="{{field.minLength}}"
                     ng-required="field.required"
-                    ng-minlength="{{field.minPassword}}"
+                    ng-disabled="field.disabled"
+                    name="{{field.name}}"
                     ng-model="modelName[field.name]">
         </md-input-container>
 
@@ -73,7 +103,13 @@
               ng-show="{{form.name}}.{{field.name}}.$touched && {{form.name}}.{{field.name}}.$invalid">
 
             <span ng-show="{{form.name}}.{{field.name}}.$error.required">Password is required.</span>
-            <span ng-show="{{form.name}}.{{field.name}}.$error.minlength">Password too short.</span>
+            <span ng-show="{{form.name}}.{{field.name}}.$error.minlength">Password too short. Must be minimum {{field.minLength}} characters.</span>
+
+            <div ng-repeat="validator in field.validators">
+                <span data-ng-show="{{form.name}}.{{field.name}}.$error.{{validator.error}}">
+                    {{validator.message}}
+                </span>
+            </div>
         </span>
     </div>
 
@@ -83,6 +119,7 @@
         <md-input-container>
             <md-select
                     placeholder="Select {{field.label}}"
+                    dynamic-directives="field.validators"
                     ng-required="field.required"
                     ng-model="modelName[field.name]">
                 <md-option ng-repeat="option in field.options track by option.id" ng-value="option.id">{{option.name}}</md-option>
@@ -95,8 +132,10 @@
     <div ng-if="field.type=='radio'">
         <md-input-container>
             <md-radio-group
-                    name="{{field.name}}"
+                    dynamic-directives="field.validators"
                     ng-required="field.required"
+                    ng-disabled="field.disabled"
+                    name="{{field.name}}"
                     ng-model="modelName[field.name]">
                 <md-radio-button ng-repeat="option in field.options"
                                  ng-value="option.id">
@@ -109,6 +148,12 @@
               ng-show="{{form.name}}.{{field.name}}.$touched && {{form.name}}.{{field.name}}.$invalid">
 
             <span ng-show="{{form.name}}.{{field.name}}.$error.required">Must select an option.</span>
+
+            <div ng-repeat="validator in field.validators">
+                <span data-ng-show="{{form.name}}.{{field.name}}.$error.{{validator.error}}">
+                    {{validator.message}}
+                </span>
+            </div>
         </span>
     </div>
 
@@ -117,8 +162,9 @@
     <div ng-if="field.type=='checkbox'">
         <md-checkbox
                 class="md-primary"
-                name="{{field.name}}"
+                dynamic-directives="field.validators"
                 ng-disabled="field.disabled"
+                name="{{field.name}}"
                 ng-model="modelName[field.name]">
             {{field.label}}
         </md-checkbox>
@@ -128,9 +174,9 @@
     <!-- SUBMIT BUTTON -->
     <div ng-if="field.type=='submit'">
         <md-button
-                name="{{field.name}}"
                 class="md-raised md-primary"
-                ng-disabled="{{form.name}}.$invalid || {{form.name}}.$pristine">
+                ng-disabled="{{form.name}}.$invalid || {{form.name}}.$pristine"
+                name="{{field.name}}">
             {{field.label}}
         </md-button>
     </div>
