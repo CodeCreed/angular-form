@@ -28,3 +28,7 @@ body {
   transform: translate3d(0,6px,0) scale(.75);
   transform-origin: top left;
 }
+
+.form-input-container .textarea {
+  height: auto;
+}

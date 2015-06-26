@@ -7,6 +7,7 @@
                     type="text"
                     dynamic-directives="field.validators"
                     ng-minlength="{{field.minLength}}"
+                    md-maxlength="{{field.maxLength}}"
                     ng-required="field.required && !field.hidden"
                     name="{{field.name}}"
                     ng-model="modelName[field.name]">
@@ -27,7 +28,7 @@
     </div>
     
     <!-- TEXT AREA FIELD -->
-    <div ng-if="field.type=='textarea'" ng-show="!field.hidden">
+    <div ng-if="field.type=='textarea'" ng-show="!field.hidden" class="textarea">
         <md-input-container>
             <label>{{field.label}}</label>
             <textarea
