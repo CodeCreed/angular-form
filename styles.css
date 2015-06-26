@@ -1,13 +1,30 @@
+body {
+  overflow-y: auto !important;
+}
+
 .form-error {
-    color:red;
-    font-size: smaller;
+  color:red;
+  font-size: smaller;
 }
 
 .form-input-container md-input-container {
-    padding: 2px 2px 10px;
+  padding: 2px 2px 10px;
 }
 
 .form-input-container > div {
-    height: 80px;
-    padding: 2px;
+  height: 80px;
+  padding: 2px;
+}
+
+.form-input-container md-select {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.form-input-container md-select-label.ng-binding {
+  color: rgba(0,0,0,.87);
+  cursor: default;
+  pointer-events: none;
+  transform: translate3d(0,6px,0) scale(.75);
+  transform-origin: top left;
 }

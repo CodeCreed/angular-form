@@ -1,13 +1,13 @@
 <div class="form-input-container">
     <!-- TEXT FIELD -->
-    <div ng-if="field.type=='text'">
+    <div ng-if="field.type=='text'" ng-show="!field.hidden">
         <md-input-container>
             <label>{{field.label}}</label>
             <input
                     type="text"
                     dynamic-directives="field.validators"
                     ng-minlength="{{field.minLength}}"
-                    ng-required="field.required"
+                    ng-required="field.required && !field.hidden"
                     name="{{field.name}}"
                     ng-model="modelName[field.name]">
         </md-input-container>
@@ -116,11 +116,23 @@
 
     <!-- SELECT FIELD -->
     <div ng-if="field.type=='select'">
-        <md-input-container>
+        <md-input-container ng-if="!field.multiple">
+            <md-select-label>{{field.label}}</md-select-label>
             <md-select
-                    placeholder="Select {{field.label}}"
+                    placeholder="{{field.label}}"
                     dynamic-directives="field.validators"
                     ng-required="field.required"
+                    ng-model="modelName[field.name]">
+                <md-option ng-repeat="option in field.options track by option.id" ng-value="option.id">{{option.name}}</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container ng-if="field.multiple">
+            <md-select-label>{{field.label}}</md-select-label>
+            <md-select
+                    placeholder="{{field.label}}"
+                    dynamic-directives="field.validators"
+                    ng-required="field.required"
+                    multiple=true
                     ng-model="modelName[field.name]">
                 <md-option ng-repeat="option in field.options track by option.id" ng-value="option.id">{{option.name}}</md-option>
             </md-select>
