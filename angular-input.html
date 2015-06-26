@@ -25,7 +25,33 @@
             </div>
         </span>
     </div>
+    
+    <!-- TEXT AREA FIELD -->
+    <div ng-if="field.type=='textarea'" ng-show="!field.hidden">
+        <md-input-container>
+            <label>{{field.label}}</label>
+            <textarea
+                    dynamic-directives="field.validators"
+                    ng-minlength="{{field.minLength}}"
+                    md-maxlength="{{field.maxLength}}"
+                    ng-required="field.required && !field.hidden"
+                    name="{{field.name}}"
+                    ng-model="modelName[field.name]"></textarea>
+        </md-input-container>
 
+        <span class="form-error"
+              ng-show="{{form.name}}.{{field.name}}.$touched && {{form.name}}.{{field.name}}.$invalid">
+
+            <span ng-show="{{form.name}}.{{field.name}}.$error.required">Field is required.</span>
+            <span ng-show="{{form.name}}.{{field.name}}.$error.minlength">Field too short. Must be minimum {{field.minLength}} characters.</span>
+
+            <div ng-repeat="validator in field.validators">
+                <span data-ng-show="{{form.name}}.{{field.name}}.$error.{{validator.error}}">
+                    {{validator.message}}
+                </span>
+            </div>
+        </span>
+    </div>
 
     <!-- NUMBER FIELD -->
     <div ng-if="field.type=='number'">
