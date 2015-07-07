@@ -1,10 +1,29 @@
+<div>
+<script type="text/ng-template" id="row">
+  <div ng-if="isArray(row)" layout-gt-md="row" layout-align-gt-md="space-between">
+    <div ng-repeat="col in row" ng-include="'col'" flex></div>
+  </div>
+  <div ng-if="isObject(row)">
+    <div ng-init="field=row" ng-include="'field'" flex></div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="col">
+  <div ng-if="isArray(col)" layout="column" layout-align="space-between">
+    <div ng-repeat="row in col" ng-include="'row'" flex></div>
+  </div>
+  <div ng-if="isObject(col)">
+    <div ng-init="field=col" ng-include="'field'" flex></div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="field">
+  <dn-input></dn-input>
+</script>
+
 <form name="{{form.name}}" ng-submit="submitMethod()">
-    <div layout-gt-md="row" layout-align-gt-md="space-between" ng-repeat="row in form.fields">
-        <div
-                layout="column"
-                ng-repeat="column in row"
-                flex>
-            <dn-input ng-repeat="field in column"></dn-input>
-        </div>
+    <div ng-repeat="row in form.fields" ng-include="'row'">
     </div>
 </form>
+</div>
+
