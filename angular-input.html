@@ -150,7 +150,7 @@
                     dynamic-directives="field.validators"
                     ng-required="field.required"
                     ng-model="modelName[field.name]">
-                <md-option ng-repeat="option in field.options track by option.id" ng-value="option.id">{{option.name}}</md-option>
+                <md-option ng-repeat="option in filtered(field.options) track by option.id" ng-value="option.id">{{option.name}}</md-option>
             </md-select>
         </md-input-container>
         <md-input-container ng-if="field.multiple">
@@ -161,7 +161,7 @@
                     ng-required="field.required"
                     multiple=true
                     ng-model="modelName[field.name]">
-                <md-option ng-repeat="option in field.options track by option.id" ng-value="option.id">{{option.name}}</md-option>
+                <md-option ng-repeat="option in filtered(field.options) track by option.id" ng-value="option.id">{{option.name}}</md-option>
             </md-select>
         </md-input-container>
     </div>
