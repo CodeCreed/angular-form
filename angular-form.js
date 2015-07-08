@@ -8,7 +8,7 @@ currentScriptPath = currentScriptPath.substring(0, currentScriptPath.lastIndexOf
 
 angular.module('angularForm', ['ngMaterial'])
 
-    .directive('dnInput', function($compile) {
+    .directive('dnInput', ['$compile', '$filter', function($compile, $filter) {
         return {
             restrict: 'E',
             scope: true,
@@ -33,7 +33,7 @@ angular.module('angularForm', ['ngMaterial'])
                 }
             }]
         }
-    })
+    }])
 
     .directive('dnForm', function() {
         return {
