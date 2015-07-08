@@ -23,6 +23,13 @@ angular.module('angularForm', ['ngMaterial'])
                             }
                         )
                     }
+                    $scope.filtered = function (list) {
+                      if ($scope.field.optionsFilter) {
+                        return $filter($scope.field.optionsFilter)(list);
+                      } else {
+                        return list;
+                      }
+                    }
                 }
             }]
         }
@@ -40,7 +47,13 @@ angular.module('angularForm', ['ngMaterial'])
             },
 
             controller: ['$scope', '$element', function($scope, $element) {
-
+              $scope.isArray = function (object) {
+                return object.constructor == Array;
+              };
+              
+              $scope.isObject = function (object) {
+                return object.constructor == Object;
+              };
             }]
         }
     })
