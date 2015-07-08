@@ -32,3 +32,16 @@ body {
 .form-input-container .textarea {
   height: auto;
 }
+
+.form-input-container .section {
+  height: auto;
+  margin-top: 1em;
+}
+
+.form-input-container .section .section-title {
+}
+
+.form-input-container .section .section-divider {
+  margin-top: 0.5em !important;
+  margin-bottom: 0.3em !important;
+}

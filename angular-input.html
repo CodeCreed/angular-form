@@ -1,4 +1,11 @@
 <div class="form-input-container">
+
+    <!-- SECTION DIVIDER -->
+    <div ng-if="field.type=='section'" class="section">
+        <span class="section-title">{{field.label}}</span>
+        <md-divider class="section-divider"></md-divider>
+    </div>
+    
     <!-- TEXT FIELD -->
     <div ng-if="field.type=='text'" ng-show="!field.hidden">
         <md-input-container>
