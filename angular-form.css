@@ -21,12 +21,20 @@ body {
   padding: 0 !important;
 }
 
+.form-input-container md-select > .md-select-label {
+  width: 100%;
+}
+
 .form-input-container md-select-label.ng-binding {
   color: rgba(0,0,0,.87);
   cursor: default;
   pointer-events: none;
   transform: translate3d(0,6px,0) scale(.75);
   transform-origin: top left;
+}
+
+md-option.form-styled[selected] {
+  background-color: lightblue; 
 }
 
 .form-input-container .textarea {
