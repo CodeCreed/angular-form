@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Angular-form by CodeCreed</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Angular-form</h1>
+        <p>Simple dynamic forms companion for AngularJs</p>
+
+        <p class="view"><a href="https://github.com/CodeCreed/angular-form">View the Project on GitHub <small>CodeCreed/angular-form</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/CodeCreed/angular-form/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/CodeCreed/angular-form/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/CodeCreed/angular-form">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h3>
+
+<hr>
+
+<ul>
+<li>angular-material (<em>bower install angular-material</em>)</li>
+</ul>
+
+<h3>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h3>
+
+<hr>
+
+<h4>
+<a id="bower-installation" class="anchor" href="#bower-installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bower installation</h4>
+
+<p><code>$ bower install https://github.com/codecreed/angular-form</code></p>
+
+<p>Or download zip manually from the link above</p>
+
+<h4>
+<a id="insert-js-and-css-dependencies" class="anchor" href="#insert-js-and-css-dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Insert JS and CSS dependencies</h4>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">link</span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>bower_components/angular-form/angular-form.css<span class="pl-pds">"</span></span>/&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>bower_components/angular-form/angular-form.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<h4>
+<a id="inject-module-dependency" class="anchor" href="#inject-module-dependency" aria-hidden="true"><span class="octicon octicon-link"></span></a>Inject module dependency</h4>
+
+<div class="highlight highlight-Javascript"><pre>angular.module(<span class="pl-s"><span class="pl-pds">'</span>yourApp<span class="pl-pds">'</span></span>, [<span class="pl-s"><span class="pl-pds">'</span>angularForm<span class="pl-pds">'</span></span>])</pre></div>
+
+<h3>
+<a id="example-usage" class="anchor" href="#example-usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example usage</h3>
+
+<hr>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">dn</span><span class="pl-e">-form</span> <span class="pl-e">form</span>=<span class="pl-s">sampleForm</span> <span class="pl-e">dn-model</span>=<span class="pl-s">sampleFormData</span> <span class="pl-e">dn-submit</span>=<span class="pl-s">sampleFormSubmit</span>&gt;&lt;/<span class="pl-ent">dn</span><span class="pl-e">-form</span>&gt;</pre></div>
+
+<p>NOTE: sampleFormObject and sampleFormData need to be the scope of the controller within which <code>&lt;dn-form&gt;&lt;/dn-form&gt;</code> is being used.</p>
+
+<p>Controller providing form object and model</p>
+
+<div class="highlight highlight-javascript"><pre>  <span class="pl-k">var</span> ideOptions <span class="pl-k">=</span> [
+    {<span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">0</span>, <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>IntelliJ IDEA<span class="pl-pds">"</span></span>},
+    {<span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">1</span>, <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Eclipse<span class="pl-pds">"</span></span>},
+    {<span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">2</span>, <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>EMACS<span class="pl-pds">"</span></span>},
+    {<span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">3</span>, <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Vi<span class="pl-pds">"</span></span>}
+  ];
+
+  $scope.sampleForm <span class="pl-k">=</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>sampleForm<span class="pl-pds">"</span></span>, <span class="pl-c">// No special characters allowed here</span>
+    <span class="pl-s"><span class="pl-pds">"</span>fields<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+      <span class="pl-c">// Start of rows</span>
+      <span class="pl-c">// Let's first add a row that has just a section divider</span>
+      {<span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>section<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>label<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Personal Details<span class="pl-pds">"</span></span>},
+      [
+        <span class="pl-c">// Start of columns</span>
+        {<span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>first_name<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>label<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>First name<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>required<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>},
+        {<span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>last_name<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>label<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Last name<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>required<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>}
+      ],
+      {<span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>email<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>email<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>label<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Email<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>required<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>},
+      [
+        [
+          {<span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>section<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>label<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Date of Birth<span class="pl-pds">"</span></span>},
+          [
+            {<span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Day<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>label<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Day<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>optionsUrl<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>days<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>optionsFilter<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>daysFilter<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>required<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>},
+            {<span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Month<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>label<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Month<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>optionsUrl<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>months<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>required<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>},
+            {<span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Year<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>label<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Year<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>optionsUrl<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>years<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>required<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>}
+          ]
+        ]
+      ],
+      [
+        {<span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>languages<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>label<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Language Skills<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>optionsUrl<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>languages<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>multiple<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>},
+        {<span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>select<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>ides<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>label<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Preferred IDEs<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>options<span class="pl-pds">"</span></span><span class="pl-k">:</span> ideOptions, <span class="pl-s"><span class="pl-pds">"</span>multiple<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>}
+      ],
+      {<span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>textarea<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>description<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>label<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Say something about yourself<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>maxLength<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">250</span>},
+      {<span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>submit<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>label<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Register<span class="pl-pds">"</span></span>}
+    ]
+  };
+  <span class="pl-c">// This variable is updated with the values entered in the form</span>
+  $scope.sampleFormData <span class="pl-k">=</span> {};
+
+  <span class="pl-c1">$scope</span>.<span class="pl-en">sampleFormSubmit</span> <span class="pl-k">=</span> <span class="pl-k">function</span> () {
+    <span class="pl-c">// TODO This method is called when the form submit button is pressed</span>
+    <span class="pl-c">// Form data is accessed using the name as the key:</span>
+    <span class="pl-c1">alert</span>(<span class="pl-s"><span class="pl-pds">"</span>Welcome <span class="pl-pds">"</span></span> <span class="pl-k">+</span> $scope.sampleFormData.first_name <span class="pl-k">+</span> <span class="pl-s"><span class="pl-pds">"</span>!<span class="pl-cce">\n</span> Your Form: <span class="pl-cce">\n</span><span class="pl-pds">"</span></span> <span class="pl-k">+</span> <span class="pl-c1">JSON</span>.stringify($scope.sampleFormData, <span class="pl-c1">null</span>, <span class="pl-s"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span>));
+  };</pre></div>
+
+<h3>
+<a id="advanced-features" class="anchor" href="#advanced-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Advanced Features</h3>
+
+<h4>
+<a id="ajax-select-options" class="anchor" href="#ajax-select-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ajax Select Options</h4>
+
+<p>Options to select type input can be passed with ajax call. Add <code>"optionsUrl": "/data/api/list"</code> as one of the properties.</p>
+
+<h4>
+<a id="custom-select-options-filter" class="anchor" href="#custom-select-options-filter" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom Select Options Filter</h4>
+
+<p>Options can be filtered by providing an additional property like <code>"optionsFilter": "filterName"</code>.</p>
+
+<h4>
+<a id="custom-field-validator" class="anchor" href="#custom-field-validator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom Field Validator</h4>
+
+<pre><code>"validators":
+  [
+    {
+      "validate-date": "true", // Name of the validator, enabled/disabled
+      "error": "invalidDate",  // Validity ID
+      "message": "Invalid Date Format" // Error message to show if enabled
+    }
+  ]
+</code></pre>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/CodeCreed">CodeCreed</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
