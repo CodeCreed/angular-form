@@ -1,0 +1,29 @@
+<html ng-app="sampleApp">
+
+  <head>
+    <title> Angular Form example </title>
+    
+    <link rel="stylesheet" href="../angular-form.css"/>
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css"/>
+    
+    <link rel="stylesheet" href="example.css"/>
+    
+  </head>
+  
+  <body ng-controller="SampleAppController" ng-cloak>
+    <md-content layout="column" layout-align="center center" class="main-container">
+      <div layout-padding class="form-container">
+        <dn-form form=sampleForm dn-model=sampleFormData dn-submit=sampleFormSubmit></dn-form>
+      </div>
+    </md-content>
+  </body>
+  
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-material/angular-material.min.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+  <script src="../angular-form.js"></script>
+
+  <script src="example.js"></script>
+
+</html>

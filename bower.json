@@ -1,0 +1,26 @@
+{
+  "name": "Angular Form for Angular Material",
+  "version": "0.2.0",
+  "authors": [
+    "Ruraj Joshi <rurajjoshi@gmail.com>",
+    "Sagun Pandey <sag.pan@gmail.com>"
+  ],
+  "description": "Angular directive for easily creating complicated forms",
+  "main": "angular-form.html",
+  "moduleType": [
+    "amd"
+  ],
+  "license": "LGPL",
+  "homepage": "http://ruraj.com/angular-form/index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.1",
+    "angular-material": "~0.10.0"
+  }
+}

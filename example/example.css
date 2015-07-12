@@ -1,0 +1,34 @@
+body {
+  overflow-y: auto !important;
+}
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 8px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(50,50,50,0.8); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+        background: rgba(80,80,80,0.4); 
+}
+
+.main-container {
+  height: 100%;
+}
+
+.form-container {
+  background: rgba(100, 100, 100, 0.1);
+}

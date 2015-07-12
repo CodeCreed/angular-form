@@ -1,44 +1,10 @@
-### Requirements
-------------------
+angular.module("sampleApp", ['ngMaterial', 'angularForm'])
 
-* angular-material (*bower install angular-material*)
-
-### Installation
-------------------
-
-
-#### Bower installation
-
-``` $ bower install https://github.com/codecreed/angular-form ```
-
-Or download zip manually from the link above
-
-#### Insert JS and CSS dependencies
-
-```html
-<link rel="stylesheet" href="bower_components/angular-form/angular-form.css"/>
-<script src="bower_components/angular-form/angular-form.js"></script>
-```
-
-#### Inject module dependency
-
-```Javascript
-angular.module('yourApp', ['angularForm'])
-```
-
-### Example usage
-------------------
-
-#### Form JSON
-
-```html
-<dn-form form=sampleForm dn-model=sampleFormData dn-submit=sampleFormSubmit></dn-form>
-```
-
-NOTE: sampleFormObject and sampleFormData need to be the scope of the controller within which ```<dn-form></dn-form>``` is being used.
-
-Controller providing form object and model
-```javascript
+  .controller("SampleAppController", SampleAppController)
+  .filter("daysFilter", DaysFilter);
+  
+  
+function SampleAppController ($scope) {
   var ideOptions = [
     {"id": 0, "name": "IntelliJ IDEA"},
     {"id": 1, "name": "Eclipse"},
@@ -84,23 +50,12 @@ Controller providing form object and model
     // Form data is accessed using the name as the key:
     alert("Welcome " + $scope.sampleFormData.first_name + "!\n Your Form: \n" + JSON.stringify($scope.sampleFormData, null, ' '));
   };
-```
+}
 
-### Advanced Features
 
-#### Ajax Select Options
-Options to select type input can be passed with ajax call. Add `"optionsUrl": "/data/api/list"` as one of the properties.
-
-#### Custom Select Options Filter
-Options can be filtered by providing an additional property like `"optionsFilter": "filterName"`.
-#### Custom Field Validator
-```
-"validators":
-  [
-    {
-      "validate-date": "true", // Name of the validator, enabled/disabled
-      "error": "invalidDate",  // Validity ID
-      "message": "Invalid Date Format" // Error message to show if enabled
-    }
-  ]
-````
+function DaysFilter() {
+  return function(list) {
+    // TODO Check the month field value and generate either a 29, 30 or 31 day list here
+    return list;
+  }
+}
