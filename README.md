@@ -26,8 +26,15 @@ Or download zip manually from the link above
 angular.module('yourApp', ['angularForm'])
 ```
 
+#### Running the provided example
+
+``` cd example ```
+``` bower install ```
+
 ### Example usage
 ------------------
+
+[Live Demo](http://ruraj.com/angular-form/example/example.html)
 
 #### Form JSON
 
