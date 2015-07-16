@@ -1,16 +1,16 @@
 {
-  "name": "Angular Form for Angular Material",
+  "name": "angular-form",
   "version": "0.2.0",
   "authors": [
     "Ruraj Joshi <rurajjoshi@gmail.com>",
     "Sagun Pandey <sag.pan@gmail.com>"
   ],
-  "description": "Angular directive for easily creating complicated forms",
+  "description": "Angular directive for easily creating complicated forms for Google's Angular Material",
   "main": "angular-form.html",
   "moduleType": [
     "amd"
   ],
-  "license": "LGPL",
+  "license": "MIT",
   "homepage": "http://ruraj.com/angular-form/index.html",
   "ignore": [
     "**/.*",
