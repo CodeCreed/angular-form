@@ -90,6 +90,31 @@
         </span>
     </div>
 
+    <!-- DATE FIELD -->
+    <div ng-if="field.type=='date'">
+        <md-input-container>
+            <label>{{field.label}}</label>
+            <input
+                    type="date"
+                    dynamic-directives="field.validators"
+                    ng-required="field.required"
+                    ng-disabled="field.disabled"
+                    name="{{field.name}}"
+                    ng-model="modelName[field.name]">
+        </md-input-container>
+
+        <span class="form-error"
+              ng-show="{{form.name}}.{{field.name}}.$touched && {{form.name}}.{{field.name}}.$invalid">
+
+            <span ng-show="{{form.name}}.{{field.name}}.$error.required">Date is required.</span>
+
+            <div ng-repeat="validator in field.validators">
+                <span data-ng-show="{{form.name}}.{{field.name}}.$error.{{validator.error}}">
+                    {{validator.message}}
+                </span>
+            </div>
+        </span>
+    </div>
 
     <!-- EMAIL FIELD -->
     <div ng-if="field.type=='email'">

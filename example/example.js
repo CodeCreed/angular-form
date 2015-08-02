@@ -39,7 +39,10 @@ function SampleAppController ($scope) {
         {"type": "select", "name": "ides", "label": "Preferred IDEs", "options": ideOptions, "multiple": true}
       ],
       {"type": "sortedinputlist", "name": "schools", "label": "Schools you have attended (in order)",
-       "inputs": [{"type": "select", "name": "name", "label": "School name", "optionsUrl": "schools"}]
+       "inputs": [
+         [{"type": "select", "name": "name", "label": "School name", "optionsUrl": "schools"},
+         {"type": "date", "name": "graduation", "label": "Graduation Date", "required": true}]
+       ]
       },
       {"type": "textarea", "name": "description", "label": "Say something about yourself", "maxLength": 250},
       {"type": "submit", "label": "Register"}
