@@ -46,10 +46,20 @@ md-option.form-styled[selected] {
   margin-top: 1em;
 }
 
+.form-input-container .sortedinputlist {
+  height: auto;
+}
+
 .form-input-container .section .section-title {
 }
 
 .form-input-container .section .section-divider {
   margin-top: 0.5em !important;
   margin-bottom: 0.3em !important;
+}
+
+.form-input-container .sortedinputlist .si-action-buttons > button {
+  min-width: 10px;
+  min-height: 10px;
+  margin: 0;
 }

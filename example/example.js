@@ -38,12 +38,20 @@ function SampleAppController ($scope) {
         {"type": "select", "name": "languages", "label": "Language Skills", "optionsUrl": "languages", "multiple": true},
         {"type": "select", "name": "ides", "label": "Preferred IDEs", "options": ideOptions, "multiple": true}
       ],
+      {"type": "sortedinputlist", "name": "schools", "label": "Schools you have attended (in order)",
+       "inputs": [{"type": "select", "name": "name", "label": "School name", "optionsUrl": "schools"}]
+      },
       {"type": "textarea", "name": "description", "label": "Say something about yourself", "maxLength": 250},
       {"type": "submit", "label": "Register"}
     ]
   };
   // This variable is updated with the values entered in the form
-  $scope.sampleFormData = {};
+  $scope.sampleFormData = {
+    schools: [
+      {"name": "KEC"},
+      {"name": "ULCA"}
+    ]
+  };
   
   $scope.sampleFormSubmit = function () {
     // TODO This method is called when the form submit button is pressed

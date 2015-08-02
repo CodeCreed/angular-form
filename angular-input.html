@@ -215,10 +215,29 @@
             {{field.label}}
         </md-checkbox>
     </div>
+    
+    <!-- SORTEDINPUTLIST -->
+    <div ng-if="field.type=='sortedinputlist'" class="sortedinputlist" ng-init="form = makeForSIL(field.inputs)">
+        <md-card layout-padding>
+          <span>
+            {{field.label}}
+          </span>
+          <div ng-repeat="item in modelName[field.name]" layout="row">
+            <div flex><dn-form form=form dn-model=item></dn-form></div>
+            <div flex=20 layout="row" class="si-action-buttons">
+              <md-button type="button" aria-label="Move Up" ng-click="moveUpSI(modelName[field.name], $index)" flex><i class="mdi mdi-arrow-up-bold"></i></md-button>
+              <md-button type="button" aria-label="Move Down" ng-click="moveDownSI(modelName[field.name], $index)" flex><i class="mdi mdi-arrow-down-bold"></i></md-button>
+              <md-button type="button" aria-label="Delete" ng-click="removeSI(modelName[field.name], $index)" flex><i class="mdi mdi-delete"></i></md-button>
+            </div>
+          </div>
+          <md-button flex class="md-raised" aria-label="Add" type="button" ng-click="addSI(modelName[field.name])"><i class="mdi mdi-plus"></i></md-button>
+        </md-card>
+    </div>
 
 
     <!-- SUBMIT BUTTON -->
     <div ng-if="field.type=='submit'">
+    <!-- TODO Check validation of child forms too! -->
         <md-button
                 class="md-raised md-primary"
                 ng-disabled="{{form.name}}.$invalid || {{form.name}}.$pristine"
