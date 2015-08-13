@@ -25,6 +25,23 @@ function SampleAppController ($scope) {
       ],
       {"type": "email", "name": "email", "label": "Email", "required": true},
       [
+        {"type": "password", "name": "password", "label": "Password", "required": true},
+        {"type": "password", "name": "confirmPassword", "label": "Confirm Password", "required": true
+        ,"validators":
+          [
+            { 
+              "validator": "comparator",
+              "data": {
+                "field": "password"
+              },
+              "error": 'comparisonError',
+              "message": "Passwords don't match"
+            }
+          ]
+        }
+      ],
+      {"type": "chips", "name": "tags", "label": "Profile Tags"},
+      [
         [
           {"type": "section", "label": "Date of Birth"},
           [
@@ -55,6 +72,10 @@ function SampleAppController ($scope) {
       {"name": "ULCA"}
     ]
   };
+  
+  $scope.$watch('sampleFormData.confirmPassword', function (n, o) {
+    console.log(n);
+  });
   
   $scope.sampleFormSubmit = function () {
     // TODO This method is called when the form submit button is pressed

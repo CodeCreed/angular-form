@@ -46,16 +46,28 @@ md-option.form-styled[selected] {
   margin-top: 1em;
 }
 
-.form-input-container .sortedinputlist {
-  height: auto;
-}
-
 .form-input-container .section .section-title {
 }
 
 .form-input-container .section .section-divider {
   margin-top: 0.5em !important;
   margin-bottom: 0.3em !important;
+}
+
+.form-input-container .sortedinputlist {
+  height: auto;
+}
+
+.form-input-container .sortedinputlist md-card {
+  background-color: transparent;
+}
+
+.form-input-container .sortedinputlist md-content {
+  background-color: transparent;
+}
+
+.form-input-container .sortedinputlist .big-icon-button {
+  font-size: x-large;
 }
 
 .form-input-container .sortedinputlist .si-action-buttons > button {

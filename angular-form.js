@@ -44,7 +44,8 @@ angular.module('angularForm', ['ngMaterial'])
           };
 
           $scope.removeSI = function(model, index) {
-            model.splice(index, 1)
+            model.splice(index, 1);
+            $scope[$scope.form.name].$setDirty(true);
           };
 
           $scope.moveUpSI = function(model, index) {
@@ -78,7 +79,6 @@ angular.module('angularForm', ['ngMaterial'])
           modelName: "=dnModel",
           submitMethod: "=dnSubmit"
         },
-
         controller: ['$scope', '$element', function($scope, $element) {
           $scope.isArray = function (object) {
             return object.constructor == Array;
@@ -87,6 +87,15 @@ angular.module('angularForm', ['ngMaterial'])
           $scope.isObject = function (object) {
             return object.constructor == Object;
           };
+
+          $scope.form.isValid = function () {
+            var form = $scope[$scope.form.name];
+            return !form.$pristine && !form.$invalid;
+          };
+
+          $scope.form.get = function () {
+            return $scope[$scope.form.name];
+          }
         }]
       }
     })
@@ -137,20 +146,53 @@ angular.module('angularForm', ['ngMaterial'])
       }
     })
 
+    .directive('comparator', function() {
+      return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function(scope, element, attributes, controller) {
+          var data = scope.$eval(attributes.comparator);
+          var thisModelName = attributes.name;
+          var form = scope[scope.form.name];
+          
+          scope.$watch('modelName[\''+ data.field +'\']', function (n,v) {
+            if ( !n || n.length == 0 || !scope.modelName[thisModelName]) return;
+            console.log(form);
+            var model = form[thisModelName];
+            //model.$invalidate();
+            //model.$setViewValue(model.$viewValue);
+            model.$setViewValue("YOMANJUSTWORK");
+            //scope.modelName[thisModelName] = "YO MAN, LETS DO THIS";
+            console.log(model.$viewValue);
+            //model.$setDirty();
+          });
+          
+          controller.$parsers.unshift(function (value) {
+            var field = scope.modelName[data.field];
+            var comparision = field == value;
+            
+            if(value) {
+              var valid = comparision;
+              controller.$setValidity('comparisonError', valid);
+            }
+
+            // If it's valid, return the value to the model,
+            // otherwise return undefined.
+            return value;
+          });
+        }
+      }
+    })
+
     .directive('dynamicDirectives', ['$compile',
       function($compile) {
 
         var addDirectiveToElement = function(scope, element, dir) {
-          var propName;
-          if (dir.if) {
-            propName = Object.keys(dir)[1];
-            var addDirective = scope.$eval(dir.if);
-            if (addDirective) {
-              element.attr(propName, dir[propName]);
-            }
-          } else { // No condition, just add directive
-            propName = Object.keys(dir)[0];
-            element.attr(propName, dir[propName]);
+          var propName = dir.validator;
+          if (dir.data) {
+            element.attr(propName, JSON.stringify(dir.data));
+          } else {
+            element.attr(propName, "");
           }
         };
 

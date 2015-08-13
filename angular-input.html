@@ -16,6 +16,7 @@
                     ng-minlength="{{field.minLength}}"
                     md-maxlength="{{field.maxLength}}"
                     ng-required="field.required && !field.hidden"
+                    ng-disabled="field.disabled"
                     name="{{field.name}}"
                     ng-model="modelName[field.name]">
         </md-input-container>
@@ -243,22 +244,41 @@
     
     <!-- SORTEDINPUTLIST -->
     <div ng-if="field.type=='sortedinputlist'" class="sortedinputlist" ng-init="form = makeForSIL(field.inputs)">
-        <md-card layout-padding>
-          <span>
-            {{field.label}}
-          </span>
-          <div ng-repeat="item in modelName[field.name]" layout="row">
-            <div flex><dn-form form=form dn-model=item></dn-form></div>
-            <div flex=20 layout="row" class="si-action-buttons">
-              <md-button type="button" aria-label="Move Up" ng-click="moveUpSI(modelName[field.name], $index)" flex><i class="mdi mdi-arrow-up-bold"></i></md-button>
-              <md-button type="button" aria-label="Move Down" ng-click="moveDownSI(modelName[field.name], $index)" flex><i class="mdi mdi-arrow-down-bold"></i></md-button>
-              <md-button type="button" aria-label="Delete" ng-click="removeSI(modelName[field.name], $index)" flex><i class="mdi mdi-delete"></i></md-button>
+        <!-- TODO Add validations like max/min items -->
+        <md-card>
+          <div layout="row" layout-align="start center">
+            <small layout-padding flex>{{field.label}}</small>
+            <div flex=20 layout="row" layout-align="end center">
+              <md-button class="md-icon-button big-icon-button" aria-label="Add" type="button" ng-click="addSI(modelName[field.name])"><i class="mdi mdi-plus-box"></i></md-button>
             </div>
           </div>
-          <md-button flex class="md-raised" aria-label="Add" type="button" ng-click="addSI(modelName[field.name])"><i class="mdi mdi-plus"></i></md-button>
+          <md-divider></md-divider>
+
+          <md-content layout-padding ng-init="modelName[field.name] = modelName[field.name]?modelName[field.name]: []">
+            <div ng-repeat="item in modelName[field.name]" layout="row">
+              <div flex><dn-form form=form dn-model=item></dn-form></div>
+              <div flex=20 layout="row" class="si-action-buttons">
+                <md-button type="button" aria-label="Move Up" ng-click="moveUpSI(modelName[field.name], $index)" flex><i class="mdi mdi-arrow-up-bold"></i></md-button>
+                <md-button type="button" aria-label="Move Down" ng-click="moveDownSI(modelName[field.name], $index)" flex><i class="mdi mdi-arrow-down-bold"></i></md-button>
+                <md-button type="button" aria-label="Delete" ng-click="removeSI(modelName[field.name], $index)" flex><i class="mdi mdi-delete"></i></md-button>
+              </div>
+            </div>
+          </md-content>
         </md-card>
     </div>
-
+    
+    <!-- CHIPS -->
+    <div ng-if="field.type=='chips'" class="chips" ng-init="!modelName[field.name]?modelName[field.name] = []:'hello lol'">
+        <md-chips 
+            ng-model="modelName[field.name]" 
+            name="{{field.name}}"
+            placeholder="{{field.label}}"
+            secondary-placeholder="{{field.label}}">
+          <md-chip-template>
+            <strong>{{$chip}}</strong>
+          </md-chip-template>
+        </md-chips>
+    </div>
 
     <!-- SUBMIT BUTTON -->
     <div ng-if="field.type=='submit'">
