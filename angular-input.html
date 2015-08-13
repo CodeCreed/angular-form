@@ -249,7 +249,7 @@
           <div layout="row" layout-align="start center">
             <small layout-padding flex>{{field.label}}</small>
             <div flex=20 layout="row" layout-align="end center">
-              <md-button class="md-icon-button big-icon-button" aria-label="Add" type="button" ng-click="addSI(modelName[field.name])"><i class="mdi mdi-plus-box"></i></md-button>
+              <md-button class="md-icon-button big-icon-button" ng-if="!field.addRemoveDisabled" aria-label="Add" type="button" ng-click="addSI(modelName[field.name])"><i class="mdi mdi-plus-box"></i></md-button>
             </div>
           </div>
           <md-divider></md-divider>
@@ -258,9 +258,9 @@
             <div ng-repeat="item in modelName[field.name]" layout="row">
               <div flex><dn-form form=form dn-model=item></dn-form></div>
               <div flex=20 layout="row" class="si-action-buttons">
-                <md-button type="button" aria-label="Move Up" ng-click="moveUpSI(modelName[field.name], $index)" flex><i class="mdi mdi-arrow-up-bold"></i></md-button>
-                <md-button type="button" aria-label="Move Down" ng-click="moveDownSI(modelName[field.name], $index)" flex><i class="mdi mdi-arrow-down-bold"></i></md-button>
-                <md-button type="button" aria-label="Delete" ng-click="removeSI(modelName[field.name], $index)" flex><i class="mdi mdi-delete"></i></md-button>
+                <md-button ng-if="!field.sortDisabled" type="button" aria-label="Move Up" ng-click="moveUpSI(modelName[field.name], $index)" flex><i class="mdi mdi-arrow-up-bold"></i></md-button>
+                <md-button ng-if="!field.sortDisabled" type="button" aria-label="Move Down" ng-click="moveDownSI(modelName[field.name], $index)" flex><i class="mdi mdi-arrow-down-bold"></i></md-button>
+                <md-button ng-if="!field.addRemoveDisabled" type="button" aria-label="Delete" ng-click="removeSI(modelName[field.name], $index)" flex><i class="mdi mdi-delete"></i></md-button>
               </div>
             </div>
           </md-content>

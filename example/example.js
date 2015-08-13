@@ -20,28 +20,29 @@ function SampleAppController ($scope) {
       {"type": "section", "label": "Personal Details"},
       [
         // Start of columns
-        {"type": "text", "name": "first_name", "label": "First name", "required": true},
-        {"type": "text", "name": "last_name", "label": "Last name", "required": true}
-      ],
-      {"type": "email", "name": "email", "label": "Email", "required": true},
-      [
-        {"type": "password", "name": "password", "label": "Password", "required": true},
-        {"type": "password", "name": "confirmPassword", "label": "Confirm Password", "required": true
-        ,"validators":
+        [
           [
-            { 
-              "validator": "comparator",
-              "data": {
-                "field": "password"
-              },
-              "error": 'comparisonError',
-              "message": "Passwords don't match"
+            {"type": "text", "name": "first_name", "label": "First name", "required": true},
+            {"type": "text", "name": "last_name", "label": "Last name", "required": true}
+          ],
+          {"type": "email", "name": "email", "label": "Email", "required": true},
+          [
+            {"type": "password", "name": "password", "label": "Password", "required": true},
+            {"type": "password", "name": "confirmPassword", "label": "Confirm Password", "required": true
+            ,"validators":
+              [
+                { 
+                  "validator": "comparator",
+                  "data": {
+                    "field": "password"
+                  },
+                  "error": 'comparisonError',
+                  "message": "Passwords don't match"
+                }
+              ]
             }
           ]
-        }
-      ],
-      {"type": "chips", "name": "tags", "label": "Profile Tags"},
-      [
+        ],
         [
           {"type": "section", "label": "Date of Birth"},
           [
@@ -49,7 +50,7 @@ function SampleAppController ($scope) {
             {"type": "select", "name": "Month", "label": "Month", "optionsUrl": "months", "required": true},
             {"type": "select", "name": "Year", "label": "Year", "optionsUrl": "years", "required": true}
           ]
-        ]
+        ],
       ],
       [
         {"type": "select", "name": "languages", "label": "Language Skills", "optionsUrl": "languages", "multiple": true},
@@ -61,7 +62,14 @@ function SampleAppController ($scope) {
          {"type": "date", "name": "graduation", "label": "Graduation Date", "required": true}]
        ]
       },
+      {"type": "sortedinputlist", "name": "subjects", "label": "Your favorite subjects",
+       "inputs": [
+         {"type": "text", "name": "name", "label": "Subject", "required": true}
+       ],
+       "sortDisabled": "true" // "addRemoveDisabled" : "true" will disable adding or removing of items
+      },
       {"type": "textarea", "name": "description", "label": "Say something about yourself", "maxLength": 250},
+      {"type": "chips", "name": "tags", "label": "Profile Tags"},
       {"type": "submit", "label": "Register"}
     ]
   };
@@ -70,7 +78,12 @@ function SampleAppController ($scope) {
     schools: [
       {"name": "KEC"},
       {"name": "ULCA"}
-    ]
+    ],
+    subjects: [
+      {"name": "CS105"},
+      {"name": "EL223"}
+    ],
+    tags: ["add", "some", "tags"]
   };
   
   $scope.$watch('sampleFormData.confirmPassword', function (n, o) {
